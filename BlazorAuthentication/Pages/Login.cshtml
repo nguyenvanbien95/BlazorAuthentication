@@ -1,0 +1,38 @@
+﻿@page
+@model BlazorAuthentication.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Shared/_Layout.cshtml";
+}
+
+<h1>Login</h1>
+<form id="dang-nhap" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @*form đăng nhập*@
+    <span class="login100-form-title">
+        LOGIN
+    </span>
+    <div class="wrap-input100 validate-input" data-validate="">
+        <input asp-for="Input.UserName" class="form-control" placeholder="Tên đăng nhập" autofocus="true" />
+        <span asp-validation-for="Input.UserName"></span>
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </span>
+    </div>
+    <div class="wrap-input100 validate-input" data-validate="Password is required">
+        <input asp-for="Input.Password" class="form-control" placeholder="Mật khẩu" />
+        <span asp-validation-for="Input.Password"></span>
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <div class="container-login100-form-btn">
+        <button class="login100-form-btn" type="submit">
+            <i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp;
+            Đăng nhập
+        </button>
+    </div>
+</form>

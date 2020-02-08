@@ -1,0 +1,38 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="top-row px-4">
+        <a href="/logout" target="_blank">Logout</a>
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+</div>
+
+@code{
+    [CascadingParameter] Task<AuthenticationState> authenticationStateTask { get; set; }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        var user = (await authenticationStateTask).User;
+        if (user == null || !user.Identity.IsAuthenticated)
+        {
+            if (!(NavigationManager.Uri.Replace(NavigationManager.BaseUri, "") == "login"))
+            {
+                NavigationManager.NavigateTo("/login");
+            }
+        }
+       
+        await base.OnInitializedAsync();
+    }
+}
