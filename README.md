@@ -16,3 +16,5 @@ I created this project to someone solve this. It is not clear for me.
 - Step 7: Logout in 2nd tab. And click to button "Click me" in 1st tab. Result is count is continuing increase value but i have logouted.
 If We reload page in 1st tab, session will be expired and redirect to login page.
 What is my mistake?
+
+Explain for this in https://github.com/dotnet/aspnetcore/issues/18901
